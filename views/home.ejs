@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                display:flex;
+                flex-direction: column;
+            }
+            .container div {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Products</h1>
+        <div class="container">
+            <% products.forEach((product) => {
+                        %>
+                            <div>
+                                <p>Name: <%= product.name %></p>
+                                <p>Description: <%= product.description %></p>
+                                <p>Price: <%= product.price.type %> <%= product.price.amount %></p>
+                            </div>
+                        <%
+                    }) %>
+            
+        </div>
+        <h1>Accounts</h1>
+        <div class="container">
+            <% if(accounts.length > 0) { %>
+                <% accounts.forEach((account) => { %>
+                                <div>
+                                    <p>Name: <%= account.name.first %> <%=account.name.last %></p>
+                                    <p>Contact: <%= account.contact.email %></p>
+                                    <p>Balance: <%= account.balance %></p>
+                                    <div>
+                                        <h3>Cart item</h3>
+                                        <% account.cart.forEach((cart_item) => { %>
+                                            <p><%= cart_item.product.name %> - <%= cart_item.quantity %></p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            <% }) %>
+            <% } else { %>
+                <div>No accounts were found</div>
+            <% } %>
+            
+        </div>
+        <h1>Stores</h1>
+        <div class="container">
+            <% if(stores.length > 0) { %>
+                <% stores.forEach((store) => { %>
+                                <div>
+                                    <p>Name: <%= store.name.first %> <%=store.name.last %></p>
+                                    <p>Contact: <%= store.contact.email %></p>
+                                    <p>Balance: <%= store.balance %></p>
+                                    <div>
+                                        <h3>Inventory</h3>
+                                        <% store.inventory.forEach((inventory_item) => { %>
+                                            <p><%= inventory_item.product.name %> - <%= inventory_item.quantity %></p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            <% }) %>
+            <% } else { %>
+                <div>No stores were found</div>
+            <% } %>
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                display:flex;
+                flex-direction: column;
+                padding-left: 15px;
+            }
+            .container div {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Stores</h1>
+        <div class="container">
+            <% if(stores.length > 0) { %>
+                <% stores.forEach((store) => { %>
+                                <div>
+                                    <p>Name: <%= store.name.first %> <%=store.name.last %></p>
+                                    <p>Contact: <%= store.contact.email %></p>
+                                    <p>Balance: <%= store.balance %></p>
+                                    <div>
+                                        <h3>Inventory</h3>
+                                        <% store.inventory.forEach((inventory_item) => { %>
+                                            <p><%= inventory_item.product.name %> - <%= inventory_item.quantity %></p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            <% }) %>
+            <% } else { %>
+                <div>No stores were found</div>
+            <% } %>
+            
+        </div>
+        
+    </body>
+</html>

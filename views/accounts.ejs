@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .container {
+                display:flex;
+                flex-direction: column;
+                padding-left: 15px;
+            }
+            .container div {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Accounts</h1>
+        <div class="container">
+            <% if(accounts.length > 0) { %>
+                <% accounts.forEach((account) => { %>
+                                <div>
+                                    <p>Name: <%= account.name.first %> <%=account.name.last %></p>
+                                    <p>Contact: <%= account.contact.email %></p>
+                                    <p>Balance: <%= account.balance %></p>
+                                    <div>
+                                        <h3>Cart item</h3>
+                                        <% account.cart.forEach((cart_item) => { %>
+                                            <p><%= cart_item.product.name %> - <%= cart_item.quantity %></p>
+                                            <% }) %>
+                                    </div>
+                                </div>
+                            <% }) %>
+            <% } else { %>
+                <div>No accounts were found</div>
+            <% } %>
+            
+        </div>
+        
+    </body>
+</html>
